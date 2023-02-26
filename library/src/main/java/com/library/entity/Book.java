@@ -1,17 +1,17 @@
 package com.library.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long bookId;
-	@Column(name="bookName",nullable=false)
+	//@NotBlank(message = "book name is mandatory")
 	private String bookName;
 	private String bookAuthor, bookPublication, bookType, bookLanguage;
 	private int bookEdition;
