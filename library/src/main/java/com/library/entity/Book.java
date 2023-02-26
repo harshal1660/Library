@@ -11,7 +11,7 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long bookId;
-	//@NotBlank(message = "book name is mandatory")
+	@NotBlank(message = "book name is mandatory")
 	private String bookName;
 	private String bookAuthor, bookPublication, bookType, bookLanguage;
 	private int bookEdition;
