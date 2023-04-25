@@ -5,9 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.entity.Book;
 import com.library.service.BookService;
@@ -16,13 +17,19 @@ import com.library.service.BookService;
 public class BookController {
 	@Autowired
 	private BookService bs;
-	@ResponseBody
+	//@ResponseBody					//----- removed -----
 	@PostMapping("/addBook")
 	public ResponseEntity<Book> addBook(@RequestBody @Validated Book book)
 	{
 		//return bs.addBook(book);
 		return new ResponseEntity<>(bs.addBook(book),HttpStatus.CREATED);
 	}
+	@DeleteMapping("/deleteBook")
+	public ResponseEntity<Book> deleteBook(@RequestParam long bookId)
+	{
+		return new ResponseEntity<>(bs.deleteBook(bookId),HttpStatus.OK);
+	}
+	
 	
 	
 	/*

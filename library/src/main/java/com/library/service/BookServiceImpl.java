@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.entity.Book;
-import com.library.exception.BookNameNotNull;
 import com.library.repository.BookRepo;
 
 @Service
@@ -17,9 +16,17 @@ public class BookServiceImpl implements BookService {
 		if (book.getBookName() == null) {
 			throw new RuntimeException("Book name is mandatory");
 		} else {
+				
 			br.save(book);
 			return book;
 		}
+	}
+
+	@Override
+	public Book deleteBook(long bookId) {
+		// TODO Auto-generated method stub
+		br.deleteById(bookId);
+		return null;
 	}
 
 }

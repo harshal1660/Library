@@ -1,5 +1,6 @@
 package com.library.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,9 +12,13 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long bookId;
-	@NotBlank(message = "book name is mandatory")
+	
+	@NotBlank(message = "bookName is mandatory")
+	@Column(unique= true)
 	private String bookName;
-	private String bookAuthor, bookPublication, bookType, bookLanguage;
+	@NotBlank(message ="bookAuthor is mandatory")
+	private String bookAuthor;
+	private String bookPublication, bookType, bookLanguage;
 	private int bookEdition;
 	private double price;
 
