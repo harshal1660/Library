@@ -31,7 +31,7 @@ public class AppExceptionHandler {
 	public Map<String, String> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
 		Map<String, String> errorMap = new LinkedHashMap<>();
 		errorMap.put("ErrorCode", "404");
-		String str=e.getRootCause().getMessage();
+		String str=e.getCause().getMessage();
 		String pat= "'([^']*)'";
 		Pattern pattern =Pattern.compile(pat);
 		Matcher matcher=pattern.matcher(str);

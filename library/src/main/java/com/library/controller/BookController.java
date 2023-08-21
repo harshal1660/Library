@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.library.entity.Book;
 import com.library.service.BookService;
@@ -24,8 +24,8 @@ public class BookController {
 		//return bs.addBook(book);
 		return new ResponseEntity<>(bs.addBook(book),HttpStatus.CREATED);
 	}
-	@DeleteMapping("/deleteBook")
-	public ResponseEntity<Book> deleteBook(@RequestParam long bookId)
+	@DeleteMapping("/deleteBook/{bookId}")
+	public ResponseEntity<Book> deleteBook(@PathVariable long bookId)
 	{
 		return new ResponseEntity<>(bs.deleteBook(bookId),HttpStatus.OK);
 	}
